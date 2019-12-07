@@ -6,47 +6,59 @@
   <%count = 1%>
 <center><b><h1>Lastes Movies</h1></b></center>
 <table id="movies">
-  <tr>
     <th>Sl.No</th>
     <th>Title</th>
     <th>Year</th>
     <th>Poster</th>
     <th>Favorite</th>
-  </tr>
-  <tr onclick="expand(this);">
+  <%if !@lates_movies_list.blank?%>
+  <%for movie_data in @lates_movies_list%>
+  <%@fetch_data = getData(movie_data.imdbID)%>
+  <tr onclick="expand(this,<%=count%>);">
     <td><%=count%></td>
-    <td><%=@api_projects["Title"]%></td>
-    <td><%=@api_projects["Year"]%></td>
-    <td><%=image_tag "#{@api_projects['Poster']}", :style=>"height: 100px;"%></td>
-    <td><%=check_box :fav,:field, {:class => "myclass"},:checked => false%></td>
+    <td><%=@fetch_data["Title"]%></td>
+    <td><%=@fetch_data["Year"]%></td>
+    <td><%=image_tag "#{@fetch_data['Poster']}", :style=>"height: 100px;"%></td>
+    <%if movie_data.favorite == "true"%>
+    <td><%= check_box(:fav,:check,:index=>count,:onclick=>"fav_function(#{count},'#{@fetch_data["imdbID"]}')",:checked => true) %></td>
+    <%else%>
+    <td><%= check_box(:fav,:check,:index=>count,:onclick=>"fav_function(#{count},'#{@fetch_data["imdbID"]}')",:checked => false) %></td>
+    <%end%>
+    </tr>
+  <tr id="hide_<%=count%>" style="display: none;">
+    <td colspan="5">
+      <table>
+        <tr >
+          <td><b>Actors</b></td><td><%=@fetch_data["Actors"]%></td>
+        </tr>
+        <tr >
+          <td><b>Director</b></td><td><%=@fetch_data["Director"]%></td>
+        </tr>
+        <tr >
+          <td><b>Language</b></td><td><%=@fetch_data["Language"]%></td>
+        </tr>
+        <tr >
+          <td><b>Rating</b></td><td> <%=@fetch_data["imdbRating"]%></td>
+        </tr>
+        <tr >
+          <td><b>Released</b></td><td><%=@fetch_data["Released"]%></td>
+        </tr>
+        <tr >
+          <td><b>Production</b></td><td><%=@fetch_data["Production"]%></td>
+        </tr>
+        <tr >
+          <td><b>Plot</b></td><td><%=@fetch_data["Plot"]%></td>
+        </tr>
+        <tr >
+          <td><b>Country</b></td><td><%=@fetch_data["Country"]%></td>
+        </tr>
+      </table>
 
-  <table id="hide" style="display: none;">
-  <tr >
-    <td><b>Actors</b></td><td><%=@api_projects["Actors"]%></td>
-  </tr>
-  <tr >
-    <td><b>Director</b></td><td><%=@api_projects["Director"]%></td>
-  </tr>
-  <tr >
-    <td><b>Language</b></td><td><%=@api_projects["Language"]%></td>
-  </tr>
-  <tr >
-    <td><b>Rating</b></td><td> <%=@api_projects["imdbRating"]%></td>
-  </tr>
-  <tr >
-    <td><b>Released</b></td><td><%=@api_projects["Released"]%></td>
-  </tr>
-  <tr >
-    <td><b>Production</b></td><td><%=@api_projects["Production"]%></td>
-  </tr>
-  <tr >
-    <td><b>Plot</b></td><td><%=@api_projects["Plot"]%></td>
-  </tr>
-  <tr >
-    <td><b>Country</b></td><td><%=@api_projects["Country"]%></td>
-  </tr>
-</table>
+  </td>
 </tr>
+<%count += 1%>
+<%end%>
+<%end%>
 </table>
 </div>
 </body>

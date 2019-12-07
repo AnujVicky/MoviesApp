@@ -65,11 +65,11 @@ $('image1').hide();
 });
 }
 }
-function expand(e){
-  var a = document.getElementById('hide');
+function expand(e,count){
+  var a = document.getElementById('hide_'+count);
   if (a.style.display == "none" )
   {
-    a.style.display = "inline-table";
+    a.style.display = "";
   }
   else{
     a.style.display = "none";
@@ -98,4 +98,32 @@ else {
   alert("Enter the Movie Name!")
 }
 }
+
+function fav_function(count,imdbID)
+{
+  var check_val = $('fav_'+count+'_check').checked;
+  //alert(check_val);
+  if (check_val == true){
+  var pars = "imdbID="+imdbID+"&set="+"yes";
+  var myAjax = new Ajax.Updater('fav', '/movies/add_fav_list', {
+  method: 'get',
+  parameters: pars,
+  onComplete: function(){
+
+  }
+  });
+}
+else
+  {
+    var pars = "imdbID="+imdbID+"&set="+"no";
+    var myAjax = new Ajax.Updater('fav', '/movies/add_fav_list', {
+    method: 'get',
+    parameters: pars,
+    onComplete: function(){
+
+    }
+    });
+  }
+}
+
 </script>

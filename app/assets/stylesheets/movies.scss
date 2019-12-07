@@ -1,5 +1,5 @@
 
-#movies, #movieslist{
+#movies{
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
@@ -21,10 +21,11 @@
   padding: 8px;
     text-align: center;
 }
-#movies tr, #hide tr:nth-child(even){background-color: #f2f2f2;}
+ #hide tr:nth-child(even){background-color: #f2f2f2;}
+#movies tr:nth-child(even){background-color: #f2f2f2;}
 
 
-#movies tr, #movieslist tr:hover {background-color: #ddd;}
+#movies tr:hover {background-color: #ddd;}
 
 #movies th, #movieslist th{
   padding-top: 12px;

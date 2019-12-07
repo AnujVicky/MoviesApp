@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get 'movies/favourite_moives_list'
   get 'movies/movies_master_list'
   post 'movies/latest_movie_create'
+  get 'movies/add_fav_list'
 end
