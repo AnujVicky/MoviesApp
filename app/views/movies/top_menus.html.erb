@@ -1,0 +1,101 @@
+</html>
+<head>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<%= javascript_include_tag "prototype", "effects", "controls" %>
+<%= javascript_include_tag 'application' %>
+
+</head>
+<body>
+  <ul class="tab">
+ <li><a href="#" class="tablinks" onclick="openwindow(event,'LatestMovies')">Latest Movies</a></li>
+ <li><a href="#" class="tablinks" onclick="openwindow(event,'FavouriteMoives')">Favourite Moives</a></li>
+ <li><a href="#" class="tablinks" onclick="openwindow(event,'MoviesMaster')">Moives Master</a></li>
+   </ul>
+<span id="image1" style="display: none;" valign="top" align="right"><img src="/images/ajax-loader2.gif" alt="ajax_loader.gif"/>
+                    <font color='red'>
+                        <%= "Loading Please Wait."%>
+                    </font>
+                </span>
+<div id = LatestMovies>
+
+</div>
+<script type="text/javascript">
+window.onload = openwindow('ssss','LatestMovies');
+var xhr = null;
+
+function openwindow(evt,tab_name)
+                          {
+                           var i, tabcontent, tablinks;
+                       $('image1').show();
+                             if(tab_name == 'LatestMovies' )
+                           {
+                                var pars = "from="+'LatestMovies';
+                        var myAjax = new Ajax.Updater('LatestMovies', '/movies/show', {
+          method: 'get',
+          parameters: pars,
+          onComplete: function(){
+              $('image1').hide();
+
+          }
+      });
+}
+else if (tab_name == 'FavouriteMoives' )
+{
+   var pars = "from="+'FavouriteMoives';
+var myAjax = new Ajax.Updater('LatestMovies', '/movies/favourite_moives_list', {
+method: 'get',
+parameters: pars,
+onComplete: function(){
+$('image1').hide();
+
+}
+});
+}
+
+else if (tab_name == 'MoviesMaster' )
+{
+   var pars = "from="+'MoviesMaster';
+var myAjax = new Ajax.Updater('LatestMovies', '/movies/movies_master', {
+method: 'get',
+parameters: pars,
+onComplete: function(){
+$('image1').hide();
+}
+});
+}
+}
+function expand(e){
+  var a = document.getElementById('hide');
+  if (a.style.display == "none" )
+  {
+    a.style.display = "inline-table";
+  }
+  else{
+    a.style.display = "none";
+  }
+
+}
+var ind = 0;
+function GetMoviesMaster(e){
+  var title = $('search_field').value;
+  if (title != ""){
+  ind++;
+  var pars = "title="+ title +"&ind="+ ind ;
+var myAjax = new Ajax.Updater('movieslist', '/movies/movies_master_list', {
+method: 'get',
+parameters: pars,
+insertion: Insertion.Bottom,
+onComplete: function(){
+$('search_field').value = "";
+},
+onFailure:function(request){
+alert('Invalid Movie Name!!');
+  }
+});
+}
+else {
+  alert("Enter the Movie Name!")
+}
+}
+</script>

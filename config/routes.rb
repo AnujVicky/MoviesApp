@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   get 'movies/show'
-  get 'movies/index'
-  get 'movies/new'
+  get 'movies/top_menus'
+  get 'movies/movies_master'
   get 'movies/edit'
-  get 'movies/list'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'movies/favourite_moives_list'
+  get 'movies/movies_master_list'
+  post 'movies/latest_movie_create'
 end

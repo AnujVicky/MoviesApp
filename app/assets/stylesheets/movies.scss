@@ -1,5 +1,5 @@
 
-#movies{
+#movies, #movieslist{
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
@@ -10,21 +10,59 @@
   width: 100%;
 }
 
+
 #movies td, #movies th, #hide td{
   border: 1px solid #ddd;
   padding: 8px;
     text-align: center;
 }
-
+#movieslist{
+  border: 1px solid #ddd;
+  padding: 8px;
+    text-align: center;
+}
 #movies tr, #hide tr:nth-child(even){background-color: #f2f2f2;}
 
 
-#movies tr:hover {background-color: #ddd;}
+#movies tr, #movieslist tr:hover {background-color: #ddd;}
 
-#movies th, {
+#movies th, #movieslist th{
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
   background-color: #4CAF50;
   color: white;
 }
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;
+  border: 1px solid #5a90cc;
+  background: #e6f2ff;
+  display: inline-block;
+  border-radius: 5px;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+         border-radius: 5px;
+    display: inline-block;
+    color: #345290;
+    text-align: center;
+    padding: 4px 5px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 10px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {background-color: #5a90cc ; color: #FFFFFF}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {background-color: #5a90cc ; color: #FFFFFF}

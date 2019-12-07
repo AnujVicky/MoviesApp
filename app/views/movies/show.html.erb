@@ -1,6 +1,6 @@
 </html>
 <head>
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <title>Latest Movies</title>
 </head>
 <body>
   <%count = 1%>
@@ -31,7 +31,7 @@
     <td><b>Language</b></td><td><%=@api_projects["Language"]%></td>
   </tr>
   <tr >
-    <td><b>Rating</b></td><td> <%=@api_projects["imdbRating"]%>/10</td>
+    <td><b>Rating</b></td><td> <%=@api_projects["imdbRating"]%></td>
   </tr>
   <tr >
     <td><b>Released</b></td><td><%=@api_projects["Released"]%></td>
@@ -48,19 +48,6 @@
 </table>
 </tr>
 </table>
+</div>
 </body>
 </html>
-
-<script type="text/javascript">
-  function expand(e){
-    var a = document.getElementById('hide');
-    if (a.style.display == "none" )
-    {
-      a.style.display = "inline-table";
-    }
-    else{
-      a.style.display = "none";
-    }
-
-  }
-</script>
