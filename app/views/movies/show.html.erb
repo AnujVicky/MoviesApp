@@ -1,0 +1,66 @@
+</html>
+<head>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+</head>
+<body>
+  <%count = 1%>
+<center><b><h1>Lastes Movies</h1></b></center>
+<table id="movies">
+  <tr>
+    <th>Sl.No</th>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Poster</th>
+    <th>Favorite</th>
+  </tr>
+  <tr onclick="expand(this);">
+    <td><%=count%></td>
+    <td><%=@api_projects["Title"]%></td>
+    <td><%=@api_projects["Year"]%></td>
+    <td><%=image_tag "#{@api_projects['Poster']}", :style=>"height: 100px;"%></td>
+    <td><%=check_box :fav,:field, {:class => "myclass"},:checked => false%></td>
+
+  <table id="hide" style="display: none;">
+  <tr >
+    <td><b>Actors</b></td><td><%=@api_projects["Actors"]%></td>
+  </tr>
+  <tr >
+    <td><b>Director</b></td><td><%=@api_projects["Director"]%></td>
+  </tr>
+  <tr >
+    <td><b>Language</b></td><td><%=@api_projects["Language"]%></td>
+  </tr>
+  <tr >
+    <td><b>Rating</b></td><td> <%=@api_projects["imdbRating"]%>/10</td>
+  </tr>
+  <tr >
+    <td><b>Released</b></td><td><%=@api_projects["Released"]%></td>
+  </tr>
+  <tr >
+    <td><b>Production</b></td><td><%=@api_projects["Production"]%></td>
+  </tr>
+  <tr >
+    <td><b>Plot</b></td><td><%=@api_projects["Plot"]%></td>
+  </tr>
+  <tr >
+    <td><b>Country</b></td><td><%=@api_projects["Country"]%></td>
+  </tr>
+</table>
+</tr>
+</table>
+</body>
+</html>
+
+<script type="text/javascript">
+  function expand(e){
+    var a = document.getElementById('hide');
+    if (a.style.display == "none" )
+    {
+      a.style.display = "inline-table";
+    }
+    else{
+      a.style.display = "none";
+    }
+
+  }
+</script>
