@@ -94,6 +94,7 @@ parameters: pars,
 insertion: Insertion.Bottom,
 onComplete: function(){
 $('search_field').value = "";
+$('create_new').disabled = false;
 },
 onFailure:function(request){
 alert('Invalid Movie Name!!');

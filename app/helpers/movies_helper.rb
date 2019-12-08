@@ -1,6 +1,6 @@
 module MoviesHelper
   def getData(id)
-  uri = URI.parse("http://www.omdbapi.com/?apikey=a1512c13&i=#{id}")
+  uri = URI.parse("http://www.omdbapi.com/?apikey=#{ENV["api_key"]}&i=#{id}")
   request = Net::HTTP::Get.new(uri)
   request["Connection"] = "keep-alive"
   request["Pragma"] = "no-cache"

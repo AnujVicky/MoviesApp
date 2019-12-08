@@ -36,7 +36,7 @@ end
   end
     def movies_master_list
       @ind = params[:ind]
-      uri = URI.parse("http://www.omdbapi.com/?apikey=a1512c13&t=#{params[:title]}")
+      uri = URI.parse("http://www.omdbapi.com/?apikey=#{ENV["api_key"]}&t=#{params[:title]}")
       request = Net::HTTP::Get.new(uri)
       request["Connection"] = "keep-alive"
       request["Pragma"] = "no-cache"
