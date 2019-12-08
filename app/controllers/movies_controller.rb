@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  skip_before_action :verify_authenticity_token, :only =>[:searched_list]
 require 'net/http'
 require 'uri'
 require 'openssl'
@@ -73,6 +74,11 @@ end
       redirect_to :action =>'top_menus'
       end
     end
+     def searched_list
+#raise params.inspect
+       @data = Movie.where("title LIKE ?", "#{params[:search_movie_data]}%")
+       #raise @data.inspect
+     end
   def new
   end
 

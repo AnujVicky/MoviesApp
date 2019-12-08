@@ -4,7 +4,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <%= javascript_include_tag "prototype", "effects", "controls" %>
 <%= javascript_include_tag 'application' %>
-
+  <%= csrf_meta_tags %>
 </head>
 <body>
   <ul class="tab">
@@ -125,5 +125,18 @@ else
     });
   }
 }
+function SearchMovies(e){
+var search_movie = $('search_movies').value;
+var params = 'search_movie_data='+ search_movie;
+new Ajax.Updater('list_display','/movies/searched_list', {
+  method: 'get',
+  parameters: params,
+  onComplete: function(){
 
+  },onFailure:function(request){
+
+     alert('Invalid Movie Name!!');
+   }
+   });
+}
 </script>

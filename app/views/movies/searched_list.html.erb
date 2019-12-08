@@ -1,22 +1,13 @@
-</html>
-<head>
-  <title>Latest Movies</title>
-</head>
-<body>
-  <%count = 1%>
-<center><b><h1>Lastes Movies</h1></b></center>
-<fieldset>
-  <div align="right"><%=text_field :search, :movies, :placeholder => "Enter Title"%>&nbsp;&nbsp;<input type="button" value="Search" class="buttons" onclick="return SearchMovies(this);"></div>
-</fieldset>
-<div id="list_display">
+<%count = 1%>
 <table id="movies">
     <th>Sl.No</th>
     <th>Title</th>
     <th>Year</th>
     <th>Poster</th>
     <th>Favorite</th>
-  <%if !@lates_movies_list.blank?%>
-  <%for movie_data in @lates_movies_list%>
+
+  <%if !@data.blank?%>
+  <%for movie_data in @data%>
   <%@fetch_data = getData(movie_data.imdbID)%>
   <tr onclick="expand(this,<%=count%>);">
     <td><%=count%></td>
@@ -37,9 +28,7 @@
         </tr>
         <tr >
           <td><b>Director</b></td><td><%=@fetch_data["Director"]%></td>
-        </tr>
-        <tr >
-          <td><b>Language</b></td><td><%=@fetch_data["Language"]%></td>
+        </tr><b>Language</b></td><td><%=@fetch_data["Language"]%></td>
         </tr>
         <tr >
           <td><b>Rating</b></td><td> <%=@fetch_data["imdbRating"]%></td>
@@ -57,13 +46,10 @@
           <td><b>Country</b></td><td><%=@fetch_data["Country"]%></td>
         </tr>
       </table>
-
   </td>
 </tr>
 <%count += 1%>
 <%end%>
 <%end%>
-</table>
 </div>
-</body>
-</html>
+</table>
