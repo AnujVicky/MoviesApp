@@ -28,7 +28,8 @@ require 'openssl'
   end
 
   def favourite_moives_list
- #raise params.inspect
+ @fav_list = Movie.where(:favorite => "true")
+ #raise @fav_list.inspect
 end
 
   def movies_master
@@ -60,17 +61,23 @@ end
     end
 
     def latest_movie_create
+      if !params[:movies_list].blank?
       for key in params[:movies_list].keys
         if !params[:movies_list][key][:title].blank?
         movie =  Movie.new
         movie.imdbID = params[:movies_list][key][:imdbID]
         movie.title = params[:movies_list][key][:title]
         movie.year = params[:movies_list][key][:year]
-      status =  movie.save!
-        end
+      status = movie.save
+    end
       end
+    end
       #raise movie.inspect
       if status
+        flash[:notice] = "Moives Created!"
+      redirect_to :action =>'top_menus'
+    else
+      flash[:notice] = "This Movies is already Taken!!"
       redirect_to :action =>'top_menus'
       end
     end

@@ -14,7 +14,7 @@
     <th>Title</th>
     <th>Year</th>
     <th>Poster</th>
-    <th>Favorite</th>
+    <th>Favourite</th>
   <%if !@lates_movies_list.blank?%>
   <%for movie_data in @lates_movies_list%>
   <%@fetch_data = getData(movie_data.imdbID)%>
@@ -39,7 +39,7 @@
           <td><b>Director</b></td><td><%=@fetch_data["Director"]%></td>
         </tr>
         <tr >
-          <td><b>Language</b></td><td><%=@fetch_data["Language"]%></td>
+          <td><b>Languages</b></td><td><%=@fetch_data["Language"]%></td>
         </tr>
         <tr >
           <td><b>Rating</b></td><td> <%=@fetch_data["imdbRating"]%></td>

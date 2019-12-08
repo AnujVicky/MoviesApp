@@ -3,20 +3,8 @@
 
 <fieldset>
   <center><%=text_field :search, :field, :placeholder => "Enter Title"%><input type="button" value="Add" class="buttons" onclick="return GetMoviesMaster(this);"></center>
-
 </fieldset>
-<table id="movies">
-  <tr>
-    <th>Sl.No</th>
-    <th>Title</th>
-    <th>Year</th>
-    <th>Poster</th>
-    <th>Favorite</th>
-  </tr>
-<table>
 <div id="movieslist">
-
 </div>
 <center><%=submit_tag :"Create New",:id=>"create_new",:class=>"buttons" %></center>
-
 <%end%>

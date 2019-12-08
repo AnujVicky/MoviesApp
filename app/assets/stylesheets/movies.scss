@@ -61,7 +61,16 @@ ul.tab li a {
     transition: 0.3s;
     font-size: 10px;
 }
-
+.flash {
+  //padding: 20px;
+  //background-color: green;
+  color: green;
+}
+.flash_warning{
+  //padding: 20px;
+  //background-color: red;
+  color: red;
+}
 /* Change background color of links on hover */
 ul.tab li a:hover {background-color: #5a90cc ; color: #FFFFFF}
 

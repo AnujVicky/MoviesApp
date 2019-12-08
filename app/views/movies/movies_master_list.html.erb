@@ -1,12 +1,17 @@
 <%if !@movies_list["Title"].nil?%>
 <%count = @ind%>
 <table id="movies">
+  <%if count == "1"%>
+  <th>Sl.No</th>
+  <th>Title</th>
+  <th>Year</th>
+  <th>Poster</th>
+  <%end%>
   <tr>
     <td><%=count%></td>
     <td><%=@movies_list["Title"]%></td>
     <td><%=@movies_list["Year"]%></td>
     <td><%=image_tag "#{@movies_list['Poster']}", :style=>"height: 100px;"%></td>
-    <td><%=check_box :fav,:field, {:class => "myclass"},:checked => false%></td>
 <%= fields_for :movies_list do |m| %>
 <%=m.hidden_field :imdbID,:index=>count,:value=>@movies_list["imdbID"]%>
 <%=m.hidden_field :title,:index=>count,:value=>@movies_list["Title"]%>

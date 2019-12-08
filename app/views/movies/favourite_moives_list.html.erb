@@ -1,1 +1,60 @@
-<h1>Hello Anuj</h1>
+<fieldset>
+<center><b><h1>Favorite Movies</h1></b></center>
+</fieldset>
+<%count = 1%>
+<table id="movies">
+    <th>Sl.No</th>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Poster</th>
+    <th>Favourite</th>
+
+  <%if !@fav_list.blank?%>
+  <%for movie_data in @fav_list%>
+  <%@fetch_data = getData(movie_data.imdbID)%>
+  <tr onclick="expand(this,<%=count%>);">
+    <td><%=count%></td>
+    <td><%=@fetch_data["Title"]%></td>
+    <td><%=@fetch_data["Year"]%></td>
+    <td><%=image_tag "#{@fetch_data['Poster']}", :style=>"height: 100px;"%></td>
+    <%if movie_data.favorite == "true"%>
+    <td><%= check_box(:fav,:check,:index=>count,:onclick=>"fav_function(#{count},'#{@fetch_data["imdbID"]}')",:checked => true) %></td>
+    <%else%>
+    <td><%= check_box(:fav,:check,:index=>count,:onclick=>"fav_function(#{count},'#{@fetch_data["imdbID"]}')",:checked => false) %></td>
+    <%end%>
+    </tr>
+  <tr id="hide_<%=count%>" style="display: none;">
+    <td colspan="5">
+      <table>
+        <tr >
+          <td><b>Actors</b></td><td><%=@fetch_data["Actors"]%></td>
+        </tr>
+        <tr >
+          <td><b>Director</b></td><td><%=@fetch_data["Director"]%></td>
+        </tr>
+        <tr>
+        <td><b>Languages</b></td><td><%=@fetch_data["Language"]%></td>
+        </tr>
+        <tr >
+          <td><b>Rating</b></td><td> <%=@fetch_data["imdbRating"]%></td>
+        </tr>
+        <tr >
+          <td><b>Released</b></td><td><%=@fetch_data["Released"]%></td>
+        </tr>
+        <tr >
+          <td><b>Production</b></td><td><%=@fetch_data["Production"]%></td>
+        </tr>
+        <tr >
+          <td><b>Plot</b></td><td><%=@fetch_data["Plot"]%></td>
+        </tr>
+        <tr >
+          <td><b>Country</b></td><td><%=@fetch_data["Country"]%></td>
+        </tr>
+      </table>
+  </td>
+</tr>
+<%count += 1%>
+<%end%>
+<%end%>
+</div>
+</table>

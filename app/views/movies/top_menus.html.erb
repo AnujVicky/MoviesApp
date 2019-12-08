@@ -17,6 +17,12 @@
                         <%= "Loading Please Wait."%>
                     </font>
                 </span>
+                <%if flash[:warning].present?%>
+                <p class="flash_warning" style="color: red;"><%=flash[:waring]%></p>
+                <%end%>
+                <%if flash[:notice].present?%>
+                <p class="flash_warning" style="color: red;"><%=flash[:notice]%></p>
+                <%end%>
 <div id = LatestMovies>
 
 </div>
